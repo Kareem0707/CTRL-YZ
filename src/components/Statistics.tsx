@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
 
 const Counter = ({ from = 0, to, duration = 2 }: { from?: number, to: number, duration?: number }) => {
   const [count, setCount] = useState(from);
-  const ref = React.useRef(null);
+  const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   useEffect(() => {
