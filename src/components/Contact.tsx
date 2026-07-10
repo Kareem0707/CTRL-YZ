@@ -60,8 +60,13 @@ export default function Contact() {
         </div>
       </div>
 
-      <footer className="mt-auto py-8 border-t border-border w-full text-center">
-        <p className="text-foreground/50 text-sm font-semibold tracking-wider flex items-center justify-center gap-2 flex-wrap">
+      <footer className="mt-auto py-8 border-t border-border w-full text-center flex flex-col items-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4 md:gap-8 text-sm font-semibold tracking-wider text-foreground/70">
+          <a href="/privacy-policy" className="hover:text-accent transition-colors">Privacy Policy</a>
+          <a href="/terms" className="hover:text-accent transition-colors">Terms & Conditions</a>
+          <a href="/return-policy" className="hover:text-accent transition-colors">Return Policy</a>
+        </div>
+        <p className="text-foreground/50 text-xs sm:text-sm font-semibold tracking-wider flex items-center justify-center gap-2 flex-wrap">
           <span>{t.footer}</span>
           <span className="text-accent/50 hidden sm:inline">|</span>
           <span>Designed By <a href="https://karimodesign.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-semibold">Kareem Elshafie</a></span>

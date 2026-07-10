@@ -32,12 +32,21 @@ function Storefront() {
   );
 }
 
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsConditions from './pages/TermsConditions';
+import ReturnPolicy from './pages/ReturnPolicy';
+
 function App() {
   return (
     <Routes>
       <Route path="/" element={<Storefront />} />
       <Route path="/cart" element={<CartPage />} />
       <Route path="/admin-login" element={<AdminLogin />} />
+      
+      {/* Legal Pages */}
+      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<TermsConditions />} />
+      <Route path="/return-policy" element={<ReturnPolicy />} />
       
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<DashboardOverview />} />
