@@ -61,8 +61,10 @@ export default function Contact() {
       </div>
 
       <footer className="mt-auto py-8 border-t border-border w-full text-center">
-        <p className="text-foreground/50 text-sm font-semibold tracking-wider">
-          {t.footer}
+        <p className="text-foreground/50 text-sm font-semibold tracking-wider flex items-center justify-center gap-2 flex-wrap">
+          <span>{t.footer}</span>
+          <span className="text-accent/50 hidden sm:inline">|</span>
+          <span>designed by kareem elshafie</span>
         </p>
       </footer>
     </section>

@@ -4,11 +4,11 @@
 @import "tailwindcss";
 
 :root {
-  --background: #0C0C0C;
-  --foreground: #D7E2EA;
-  --accent: #0055ff;
-  --border: rgba(215, 226, 234, 0.1);
-  --glass: rgba(12, 12, 12, 0.6);
+  --background: #1e2022; /* Grey stone */
+  --foreground: #e2e8f0;
+  --accent: #3b82f6; /* Softer blue accent */
+  --border: rgba(255, 255, 255, 0.08);
+  --glass: rgba(30, 32, 34, 0.6);
 }
 
 @theme inline {
