@@ -14,10 +14,12 @@ import DashboardOverview from './pages/admin/DashboardOverview';
 import OrdersView from './pages/admin/OrdersView';
 import ProductsManager from './pages/admin/ProductsManager';
 import AdminLogin from './pages/admin/AdminLogin';
+import LoadingScreen from './components/LoadingScreen';
 
 function Storefront() {
   return (
     <div className="min-h-screen selection:bg-accent selection:text-background">
+      <LoadingScreen />
       <Navbar />
       <main>
         <Hero />
