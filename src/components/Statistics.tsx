@@ -90,7 +90,7 @@ export default function Statistics() {
             className="glass p-12 rounded-[2rem] flex flex-col items-center justify-center gap-4"
           >
             <div className="text-6xl md:text-8xl font-display font-black text-accent drop-shadow-[0_0_20px_rgba(245,180,18,0.4)]">
-              +<Counter to={5000} duration={2.5} />
+              +<Counter to={146} duration={2.5} />
             </div>
             <div className="text-xl md:text-2xl font-bold uppercase tracking-widest text-foreground/80">
               {t.clients}
@@ -105,7 +105,7 @@ export default function Statistics() {
             className="glass p-12 rounded-[2rem] flex flex-col items-center justify-center gap-4"
           >
             <div className="text-6xl md:text-8xl font-display font-black text-accent drop-shadow-[0_0_20px_rgba(245,180,18,0.4)]">
-              <Counter to={99} duration={2.5} />.9%
+              <Counter to={94} duration={2.5} />.7%
             </div>
             <div className="text-xl md:text-2xl font-bold uppercase tracking-widest text-foreground/80">
               {t.success}
