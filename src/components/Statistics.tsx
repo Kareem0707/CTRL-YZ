@@ -7,6 +7,7 @@ const Counter = ({ from = 0, to, duration = 2 }: { from?: number, to: number, du
   const [count, setCount] = useState(from);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isFloat = to % 1 !== 0;
 
   useEffect(() => {
     if (isInView) {
@@ -14,7 +15,7 @@ const Counter = ({ from = 0, to, duration = 2 }: { from?: number, to: number, du
       const step = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-        setCount(Math.floor(progress * (to - from) + from));
+        setCount(progress * (to - from) + from);
         if (progress < 1) {
           window.requestAnimationFrame(step);
         }
@@ -23,7 +24,7 @@ const Counter = ({ from = 0, to, duration = 2 }: { from?: number, to: number, du
     }
   }, [isInView, from, to, duration]);
 
-  return <span ref={ref}>{count}</span>;
+  return <span ref={ref}>{isFloat ? count.toFixed(1) : Math.floor(count)}</span>;
 };
 
 export default function Statistics() {
@@ -105,7 +106,7 @@ export default function Statistics() {
             className="glass p-12 rounded-[2rem] flex flex-col items-center justify-center gap-4"
           >
             <div className="text-6xl md:text-8xl font-display font-black text-accent drop-shadow-[0_0_20px_rgba(245,180,18,0.4)]">
-              <Counter to={94} duration={2.5} />.7%
+              <Counter to={94.7} duration={2.5} />%
             </div>
             <div className="text-xl md:text-2xl font-bold uppercase tracking-widest text-foreground/80">
               {t.success}

@@ -8,6 +8,7 @@ const Counter = ({ from = 0, to, duration = 2 }: { from?: number, to: number, du
   const [count, setCount] = useState(from);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isFloat = to % 1 !== 0;
 
   useEffect(() => {
     if (isInView) {
@@ -15,7 +16,7 @@ const Counter = ({ from = 0, to, duration = 2 }: { from?: number, to: number, du
       const step = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-        setCount(Math.floor(progress * (to - from) + from));
+        setCount(progress * (to - from) + from);
         if (progress < 1) {
           window.requestAnimationFrame(step);
         }
@@ -24,7 +25,7 @@ const Counter = ({ from = 0, to, duration = 2 }: { from?: number, to: number, du
     }
   }, [isInView, from, to, duration]);
 
-  return <span ref={ref}>{count}</span>;
+  return <span ref={ref}>{isFloat ? count.toFixed(1) : Math.floor(count)}</span>;
 };
 
 export default function About() {

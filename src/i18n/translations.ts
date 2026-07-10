@@ -24,8 +24,8 @@ export const translations = {
       title: "Crafting Identity",
       mission: "At CTRL YZ, we believe clothing is a canvas for your ideas. Our mission is to merge high-end streetwear with cutting-edge 3D printing technology, ensuring every piece is unique, durable, and luxurious.",
       stats: [
-        { value: 5000, label: "Happy Clients", suffix: "+" },
-        { value: 99, label: "Satisfaction", suffix: "%" },
+        { value: 146, label: "Happy Clients", suffix: "+" },
+        { value: 94.7, label: "Satisfaction", suffix: "%" },
         { value: 50, label: "Exclusive Drops", suffix: "" }
       ]
     },
@@ -85,8 +85,8 @@ export const translations = {
       title: "نصنع هويتك",
       mission: "في CTRL YZ، نؤمن بأن الملابس هي لوحة لأفكارك. مهمتنا هي دمج أزياء الشارع الفاخرة مع أحدث تقنيات الطباعة ثلاثية الأبعاد، لضمان أن تكون كل قطعة فريدة، متينة، وفخمة.",
       stats: [
-        { value: 5000, label: "عميل سعيد", suffix: "+" },
-        { value: 99, label: "نسبة الرضا", suffix: "%" },
+        { value: 146, label: "عميل سعيد", suffix: "+" },
+        { value: 94.7, label: "نسبة الرضا", suffix: "%" },
         { value: 50, label: "إصدار حصري", suffix: "" }
       ]
     },
