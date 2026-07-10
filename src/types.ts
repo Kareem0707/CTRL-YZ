@@ -15,11 +15,11 @@ export interface Order {
   id: string;
   items: CartItem[];
   total: number;
-  date: string;
-  status: 'Pending' | 'Completed' | 'Cancelled';
+  createdAt: string;
+  status: string;
   paymentMethod: string;
   receiptImage?: string; // For Vodafone Cash or InstaPay
   customerName: string;
-  customerPhone: string;
-  customerAddress: string;
+  phone: string;
+  address: string;
 }

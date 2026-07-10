@@ -20,7 +20,7 @@ export default function OrdersView() {
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-6 pb-6 border-b border-white/10">
                   <div>
                     <h3 className="text-xl font-bold text-accent">Order #{order.id}</h3>
-                    <p className="text-sm text-foreground/50">{new Date(order.date).toLocaleString()}</p>
+                    <p className="text-sm text-foreground/50">{new Date(order.createdAt).toLocaleString()}</p>
                   </div>
                   <div className="flex gap-4 items-center">
                     <span className="px-3 py-1 bg-yellow-500/20 text-yellow-500 rounded-full text-xs font-bold uppercase">
@@ -34,8 +34,8 @@ export default function OrdersView() {
                   <div>
                     <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground/50 mb-3">Customer Details</h4>
                     <p className="font-medium text-white">{order.customerName}</p>
-                    <p className="text-foreground/80">{order.customerPhone}</p>
-                    <p className="text-foreground/80 mt-2">{order.customerAddress}</p>
+                    <p className="text-foreground/80">{order.phone}</p>
+                    <p className="text-foreground/80 mt-2">{order.address}</p>
                     
                     <h4 className="text-sm font-semibold uppercase tracking-wider text-foreground/50 mt-6 mb-3">Payment Method</h4>
                     <p className="font-medium capitalize text-white flex items-center gap-3">

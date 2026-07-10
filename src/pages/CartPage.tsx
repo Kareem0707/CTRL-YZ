@@ -41,13 +41,13 @@ export default function CartPage() {
       id: Math.random().toString(36).substr(2, 9),
       items: [...items],
       total,
-      date: new Date().toISOString(),
-      status: 'Pending' as const,
+      createdAt: new Date().toISOString(),
+      status: 'pending',
       paymentMethod,
       receiptImage: needsReceipt ? receiptImage || undefined : undefined,
       customerName,
-      customerPhone,
-      customerAddress
+      phone: customerPhone,
+      address: customerAddress
     };
 
     addOrder(newOrder);

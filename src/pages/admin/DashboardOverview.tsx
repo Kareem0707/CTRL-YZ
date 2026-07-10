@@ -64,7 +64,7 @@ export default function DashboardOverview() {
                 {orders.slice(0, 5).map(order => (
                   <tr key={order.id} className="border-b border-white/5 hover:bg-white/5 transition-colors">
                     <td className="py-4 text-accent font-medium">#{order.id}</td>
-                    <td className="py-4">{new Date(order.date).toLocaleDateString()}</td>
+                    <td className="p-4 text-foreground/70">{new Date(order.createdAt).toLocaleDateString()}</td>
                     <td className="py-4">{order.customerName}</td>
                     <td className="py-4">
                       <span className="px-3 py-1 bg-yellow-500/20 text-yellow-500 rounded-full text-xs font-bold uppercase">
