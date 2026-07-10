@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { User, Shirt } from 'lucide-react';
 
 export default function LoadingScreen() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // In a real scenario, this could wait for images or fonts to load.
-    // For now, we simulate a loading time of 2.5 seconds.
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2500);
-
+    }, 3000); // Increased slightly to show the animation
     return () => clearTimeout(timer);
   }, []);
 
@@ -23,32 +21,48 @@ export default function LoadingScreen() {
           transition={{ duration: 0.8, ease: "easeInOut" }}
           className="fixed inset-0 z-[9999] bg-background flex flex-col items-center justify-center overflow-hidden"
         >
-          {/* Temporary Placeholder for the Mecha Chameleon 3D Animation */}
           <div className="relative flex flex-col items-center justify-center">
             
-            {/* The Mecha Chameleon Image */}
+            {/* The Animation Container */}
+            <div className="relative w-40 h-40 flex justify-center mb-8">
+              
+              {/* Base Figure */}
+              <motion.div 
+                className="absolute bottom-0 text-white/80"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                <User size={140} strokeWidth={1.5} />
+              </motion.div>
+              
+              {/* Falling Oversized T-Shirt */}
+              <motion.div 
+                className="absolute bottom-1 text-accent drop-shadow-[0_0_20px_rgba(245,180,18,0.5)]"
+                initial={{ y: -500, opacity: 0, scale: 1.2 }}
+                animate={{ y: 0, opacity: 1, scale: 1.1 }}
+                transition={{ 
+                  type: "spring", 
+                  stiffness: 100,
+                  damping: 12,
+                  mass: 1.5,
+                  delay: 0.5 
+                }}
+              >
+                <Shirt size={140} fill="currentColor" strokeWidth={1} />
+              </motion.div>
+            </div>
+
             <motion.div
-              animate={{ 
-                scale: [1, 1.05, 1],
-                opacity: [0.8, 1, 0.8]
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-              className="w-64 h-64 md:w-80 md:h-80 rounded-[3rem] overflow-hidden mb-8 shadow-[0_0_50px_rgba(255,255,255,0.1)] relative"
+              animate={{ opacity: [0.5, 1, 0.5] }}
+              transition={{ duration: 2, repeat: Infinity }}
+              className="text-2xl font-display font-black text-white tracking-widest uppercase mb-4"
             >
-              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
-              <img 
-                src="/assets/mecha_loading.png" 
-                alt="Mecha Chameleon Loading" 
-                className="w-full h-full object-cover grayscale mix-blend-screen"
-              />
+              CTRL YZ
             </motion.div>
             
             {/* Minimalist loading bar */}
-            <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden mt-8">
+            <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden">
               <motion.div 
                 className="h-full bg-accent rounded-full"
                 initial={{ width: "0%" }}
