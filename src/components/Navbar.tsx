@@ -12,6 +12,7 @@ export default function Navbar() {
   const { items } = useCart();
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
+  const isAuthenticated = localStorage.getItem('isAdmin') === 'true';
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const cartItemsCount = items.reduce((acc, item) => acc + item.quantity, 0);
@@ -62,9 +63,11 @@ export default function Navbar() {
             </Link>
           )}
 
-          <Link to="/admin" className="flex items-center gap-2 p-1.5 sm:p-2 text-foreground/50 hover:text-accent transition-colors">
-            <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
-          </Link>
+          {isAuthenticated && (
+            <Link to="/admin" className="flex items-center gap-2 p-1.5 sm:p-2 text-foreground/50 hover:text-accent transition-colors">
+              <ShieldCheck className="w-5 h-5 md:w-6 md:h-6" />
+            </Link>
+          )}
 
           {/* Mobile Menu Toggle */}
           <button 

@@ -1,10 +1,16 @@
 import { useState } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, Outlet, useLocation, Navigate } from 'react-router-dom';
 import { LayoutDashboard, ShoppingBag, Package, Home, Menu, X } from 'lucide-react';
 
 export default function AdminLayout() {
   const location = useLocation();
   const [isExpanded, setIsExpanded] = useState(false);
+  const isAuthenticated = localStorage.getItem('isAdmin') === 'true';
+
+  if (!isAuthenticated) {
+    return <Navigate to="/admin-login" replace />;
+  }
+
   
   const navItems = [
     { name: 'Dashboard', path: '/admin', icon: <LayoutDashboard className="w-6 h-6 shrink-0" /> },

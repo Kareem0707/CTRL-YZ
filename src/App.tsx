@@ -13,6 +13,7 @@ import AdminLayout from './pages/admin/AdminLayout';
 import DashboardOverview from './pages/admin/DashboardOverview';
 import OrdersView from './pages/admin/OrdersView';
 import ProductsManager from './pages/admin/ProductsManager';
+import AdminLogin from './pages/admin/AdminLogin';
 
 function Storefront() {
   return (
@@ -36,6 +37,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Storefront />} />
       <Route path="/cart" element={<CartPage />} />
+      <Route path="/admin-login" element={<AdminLogin />} />
       
       <Route path="/admin" element={<AdminLayout />}>
         <Route index element={<DashboardOverview />} />
