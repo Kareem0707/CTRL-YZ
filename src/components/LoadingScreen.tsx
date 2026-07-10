@@ -26,28 +26,26 @@ export default function LoadingScreen() {
           {/* Temporary Placeholder for the Mecha Chameleon 3D Animation */}
           <div className="relative flex flex-col items-center justify-center">
             
-            {/* The pulsing logo / placeholder text */}
+            {/* The Mecha Chameleon Image */}
             <motion.div
               animate={{ 
-                scale: [1, 1.1, 1],
-                opacity: [0.5, 1, 0.5]
+                scale: [1, 1.05, 1],
+                opacity: [0.8, 1, 0.8]
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="text-4xl md:text-6xl font-display font-black text-accent tracking-widest uppercase mb-8"
+              className="w-64 h-64 md:w-80 md:h-80 rounded-[3rem] overflow-hidden mb-8 shadow-[0_0_50px_rgba(255,255,255,0.1)] relative"
             >
-              CTRL YZ
+              <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10" />
+              <img 
+                src="/assets/mecha_loading.png" 
+                alt="Mecha Chameleon Loading" 
+                className="w-full h-full object-cover grayscale mix-blend-screen"
+              />
             </motion.div>
-
-            {/* Hint for the developer where the 3D video will go */}
-            <div className="absolute top-full mt-4 text-center">
-              <p className="text-foreground/40 text-sm max-w-xs leading-relaxed border border-white/5 bg-white/5 p-4 rounded-xl">
-                [مكان فيديو المجسم 3D الأبيض وهو يرتدي التيشيرت]
-              </p>
-            </div>
             
             {/* Minimalist loading bar */}
             <div className="w-48 h-1 bg-white/10 rounded-full overflow-hidden mt-8">
