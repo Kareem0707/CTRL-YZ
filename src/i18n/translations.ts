@@ -2,8 +2,8 @@ export const translations = {
   en: {
     nav: {
       about: "About",
+      products: "Our Collection",
       services: "Services",
-      portfolio: "Portfolio",
       contact: "Contact"
     },
     hero: {
@@ -63,8 +63,8 @@ export const translations = {
   ar: {
     nav: {
       about: "من نحن",
+      products: "تشكيلتنا",
       services: "خدماتنا",
-      portfolio: "أعمالنا",
       contact: "تواصل معنا"
     },
     hero: {

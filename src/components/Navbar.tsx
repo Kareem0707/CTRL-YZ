@@ -30,7 +30,7 @@ export default function Navbar() {
         
         {/* Desktop Links */}
         <div className="hidden md:flex items-center gap-8">
-          {!isAdmin && ['about', 'services', 'portfolio', 'contact'].map((item) => (
+          {!isAdmin && ['about', 'products', 'services', 'contact'].map((item) => (
             <a 
               key={item} 
               href={`/#${item}`} 
@@ -86,7 +86,7 @@ export default function Navbar() {
             className="md:hidden bg-background/95 backdrop-blur-xl border-t border-white/5 overflow-hidden"
           >
             <div className="px-6 py-4 flex flex-col gap-4">
-              {!isAdmin && ['about', 'services', 'portfolio', 'contact'].map((item) => (
+              {!isAdmin && ['about', 'products', 'services', 'contact'].map((item) => (
                 <a 
                   key={item} 
                   href={`/#${item}`}

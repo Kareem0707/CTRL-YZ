@@ -13,6 +13,7 @@ interface AdminContextType {
   products: Product[];
   orders: Order[];
   addProduct: (product: Product) => void;
+  updateProduct: (id: string, product: Partial<Product>) => void;
   deleteProduct: (id: string) => void;
   addOrder: (order: Order) => void;
 }
@@ -24,11 +25,14 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
   const [orders, setOrders] = useState<Order[]>([]);
 
   const addProduct = (product: Product) => setProducts([...products, product]);
+  const updateProduct = (id: string, updatedFields: Partial<Product>) => {
+    setProducts(products.map(p => p.id === id ? { ...p, ...updatedFields } : p));
+  };
   const deleteProduct = (id: string) => setProducts(products.filter(p => p.id !== id));
   const addOrder = (order: Order) => setOrders([order, ...orders]);
 
   return (
-    <AdminContext.Provider value={{ products, orders, addProduct, deleteProduct, addOrder }}>
+    <AdminContext.Provider value={{ products, orders, addProduct, updateProduct, deleteProduct, addOrder }}>
       {children}
     </AdminContext.Provider>
   );
