@@ -6,7 +6,7 @@ const INITIAL_PRODUCTS: Product[] = Array.from({ length: 31 }).map((_, idx) => (
   id: String(idx + 1),
   name: `CTRL YZ #${idx + 1}`,
   price: 450,
-  image: `/assets/products/product-${idx + 1}.jpg`,
+  image: `/assets/products/product-${idx + 1}.webp`,
   description: 'Premium CTRL YZ Streetwear Collection',
   isBestSeller: idx < 3, // Make first 3 best sellers by default as an example
 }));

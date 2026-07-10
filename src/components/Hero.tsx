@@ -3,7 +3,7 @@ import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
 
 const generateRow = (start: number, end: number) => {
-  const arr = Array.from({ length: end - start + 1 }).map((_, i) => `/assets/products/product-${start + i}.jpg`);
+  const arr = Array.from({ length: end - start + 1 }).map((_, i) => `/assets/products/product-${start + i}.webp`);
   return [...arr, ...arr]; // Duplicate for seamless looping
 };
 

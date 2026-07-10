@@ -46,7 +46,7 @@ export default function About() {
         >
           <div className="absolute inset-0 bg-accent/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
           <img 
-            src="/assets/products/product-2.jpg" 
+            src="/assets/products/product-2.webp" 
             alt="About CTRL YZ" 
             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
           />
