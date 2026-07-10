@@ -97,7 +97,7 @@ export default function ProductsManager() {
             </div>
             
             {/* Actions */}
-            <div className="absolute top-2 right-2 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="absolute top-2 right-2 flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity z-10">
               <button 
                 onClick={() => openModal(product)}
                 className="bg-blue-500/80 hover:bg-blue-500 text-white p-2 rounded-lg transition-colors backdrop-blur-md"
