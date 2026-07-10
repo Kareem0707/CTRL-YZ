@@ -4,7 +4,6 @@ import Hero from './components/Hero';
 import Marquee from './components/Marquee';
 import About from './components/About';
 import Services from './components/Services';
-import Portfolio from './components/Portfolio';
 import Statistics from './components/Statistics';
 import Contact from './components/Contact';
 import Products from './components/Products';
@@ -25,7 +24,6 @@ function Storefront() {
         <Marquee />
         <About />
         <Services />
-        <Portfolio />
         <Statistics />
         <Contact />
       </main>

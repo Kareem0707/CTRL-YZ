@@ -4,31 +4,31 @@ import type { Product, Order } from '../types';
 const INITIAL_PRODUCTS: Product[] = [
   {
     id: '1',
-    name: 'Premium T-Shirt',
-    price: 450,
-    image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800',
-    description: 'High quality cotton t-shirt',
+    name: 'Neon Genesis',
+    price: 850,
+    image: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80',
+    description: 'Streetwear',
   },
   {
     id: '2',
-    name: 'Denim Jacket',
+    name: 'Liquid Metal',
     price: 1200,
-    image: 'https://images.unsplash.com/photo-1576871337622-98d48d1cf531?auto=format&fit=crop&q=80&w=800',
-    description: 'Classic blue denim jacket',
+    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80',
+    description: 'Custom 3D',
   },
   {
     id: '3',
-    name: 'Leather Sneakers',
-    price: 850,
-    image: 'https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&q=80&w=800',
-    description: 'Comfortable everyday sneakers',
+    name: 'Void Walker',
+    price: 950,
+    image: 'https://images.unsplash.com/photo-1550684376-efcbd6e3f031?auto=format&fit=crop&q=80',
+    description: 'Oversized',
   },
   {
     id: '4',
-    name: 'Sunglasses',
-    price: 300,
-    image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&q=80&w=800',
-    description: 'UV protection sunglasses',
+    name: 'Cyber YZ',
+    price: 1500,
+    image: 'https://images.unsplash.com/photo-1558591710-4b4a1ae0f04d?auto=format&fit=crop&q=80',
+    description: 'Limited Edition',
   }
 ];
 
