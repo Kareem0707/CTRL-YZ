@@ -1,5 +1,6 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
 import type { Product, Order } from '../types';
+import { supabase } from '../lib/supabase';
 
 const INITIAL_PRODUCTS: Product[] = Array.from({ length: 31 }).map((_, idx) => ({
   id: String(idx + 1),
@@ -7,15 +8,17 @@ const INITIAL_PRODUCTS: Product[] = Array.from({ length: 31 }).map((_, idx) => (
   price: 450,
   image: `/assets/products/product-${idx + 1}.jpg`,
   description: 'Premium CTRL YZ Streetwear Collection',
+  isBestSeller: idx < 3, // Make first 3 best sellers by default as an example
 }));
 
 interface AdminContextType {
   products: Product[];
   orders: Order[];
-  addProduct: (product: Product) => void;
-  updateProduct: (id: string, product: Partial<Product>) => void;
-  deleteProduct: (id: string) => void;
-  addOrder: (order: Order) => void;
+  addProduct: (product: Product) => Promise<void>;
+  updateProduct: (id: string, product: Partial<Product>) => Promise<void>;
+  deleteProduct: (id: string) => Promise<void>;
+  addOrder: (order: Order) => Promise<void>;
+  loading: boolean;
 }
 
 const AdminContext = createContext<AdminContextType | undefined>(undefined);
@@ -23,16 +26,66 @@ const AdminContext = createContext<AdminContextType | undefined>(undefined);
 export const AdminProvider = ({ children }: { children: ReactNode }) => {
   const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
   const [orders, setOrders] = useState<Order[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  const addProduct = (product: Product) => setProducts([...products, product]);
-  const updateProduct = (id: string, updatedFields: Partial<Product>) => {
-    setProducts(products.map(p => p.id === id ? { ...p, ...updatedFields } : p));
+  // Fetch initial data from Supabase
+  useEffect(() => {
+    const fetchData = async () => {
+      if (!supabase) {
+        setLoading(false);
+        return; // Fallback to local INITIAL_PRODUCTS if no keys provided yet
+      }
+
+      try {
+        const { data: dbProducts, error: pError } = await supabase.from('products').select('*');
+        if (!pError && dbProducts && dbProducts.length > 0) {
+          setProducts(dbProducts);
+        }
+
+        const { data: dbOrders, error: oError } = await supabase.from('orders').select('*');
+        if (!oError && dbOrders) {
+          setOrders(dbOrders);
+        }
+      } catch (err) {
+        console.error("Supabase fetch error:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  const addProduct = async (product: Product) => {
+    if (supabase) {
+      await supabase.from('products').insert([product]);
+    }
+    setProducts(prev => [...prev, product]);
   };
-  const deleteProduct = (id: string) => setProducts(products.filter(p => p.id !== id));
-  const addOrder = (order: Order) => setOrders([order, ...orders]);
+
+  const updateProduct = async (id: string, updatedFields: Partial<Product>) => {
+    if (supabase) {
+      await supabase.from('products').update(updatedFields).eq('id', id);
+    }
+    setProducts(prev => prev.map(p => p.id === id ? { ...p, ...updatedFields } : p));
+  };
+
+  const deleteProduct = async (id: string) => {
+    if (supabase) {
+      await supabase.from('products').delete().eq('id', id);
+    }
+    setProducts(prev => prev.filter(p => p.id !== id));
+  };
+
+  const addOrder = async (order: Order) => {
+    if (supabase) {
+      await supabase.from('orders').insert([order]);
+    }
+    setOrders(prev => [order, ...prev]);
+  };
 
   return (
-    <AdminContext.Provider value={{ products, orders, addProduct, updateProduct, deleteProduct, addOrder }}>
+    <AdminContext.Provider value={{ products, orders, addProduct, updateProduct, deleteProduct, addOrder, loading }}>
       {children}
     </AdminContext.Provider>
   );
