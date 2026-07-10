@@ -23,10 +23,10 @@ export default function Products() {
           {products.map((product, idx) => (
             <motion.div
               key={product.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
+              initial={{ opacity: 0, y: 50, scale: 0.9 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: (idx % 4) * 0.15, type: "spring", stiffness: 60, damping: 15 }}
               className="glass rounded-3xl overflow-hidden group hover:border-accent/50 transition-colors flex flex-col"
             >
               <div className="relative h-64 overflow-hidden">
