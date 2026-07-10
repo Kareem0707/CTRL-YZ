@@ -64,7 +64,7 @@ export default function Contact() {
         <p className="text-foreground/50 text-sm font-semibold tracking-wider flex items-center justify-center gap-2 flex-wrap">
           <span>{t.footer}</span>
           <span className="text-accent/50 hidden sm:inline">|</span>
-          <span>Designed By Kareem Elshafie</span>
+          <span>Designed By <a href="https://karimodesign.vercel.app/" target="_blank" rel="noopener noreferrer" className="text-accent hover:underline font-semibold">Kareem Elshafie</a></span>
         </p>
       </footer>
     </section>
