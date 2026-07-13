@@ -59,7 +59,13 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
 
   const addProduct = async (product: Product) => {
     if (supabase) {
-      await supabase.from('products').insert([product]);
+      const { error } = await supabase.from('products').insert([product]);
+      if (error) {
+        alert("فشل رفع المنتج لقاعدة البيانات: " + error.message);
+        return;
+      }
+    } else {
+      alert("تنبيه: قاعدة البيانات غير متصلة (تأكد من إضافة VITE_SUPABASE_URL في Vercel). تمت الإضافة مؤقتاً وستختفي عند التحديث.");
     }
     setProducts(prev => [...prev, product]);
   };
