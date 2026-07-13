@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
-import { Globe, Menu, X, ShoppingCart, ShieldCheck, PackageSearch } from 'lucide-react';
+import { Globe, Menu, X, ShieldCheck, PackageSearch } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
@@ -17,7 +17,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
 
-  const cartItemsCount = items.reduce((acc, item) => acc + item.quantity, 0);
+
 
   return (
     <motion.nav 

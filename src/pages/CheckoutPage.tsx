@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAdmin } from '../context/AdminContext';
 import { useNavigate } from 'react-router-dom';
-import { Trash2, ShieldCheck } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import Navbar from '../components/Navbar';
 
 export default function CheckoutPage() {
