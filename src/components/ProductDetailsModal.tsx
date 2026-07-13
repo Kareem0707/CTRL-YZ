@@ -37,7 +37,7 @@ export default function ProductDetailsModal({ product, onClose, onAddToCart }: P
           initial={{ scale: 0.9, y: 20 }}
           animate={{ scale: 1, y: 0 }}
           exit={{ scale: 0.9, y: 20 }}
-          className="relative w-full max-w-5xl bg-background border border-white/10 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
+          className="relative w-full max-w-5xl bg-background border border-white/10 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[85vh] sm:max-h-[90vh]"
           onClick={e => e.stopPropagation()}
         >
           <button 
@@ -48,7 +48,7 @@ export default function ProductDetailsModal({ product, onClose, onAddToCart }: P
           </button>
 
           {/* Image Section */}
-          <div className="w-full md:w-1/2 h-64 md:h-auto relative overflow-hidden bg-white/5">
+          <div className="w-full md:w-1/2 h-48 sm:h-64 md:h-auto relative overflow-hidden bg-white/5 shrink-0">
             <img 
               src={product.image} 
               alt={product.name} 
@@ -57,9 +57,9 @@ export default function ProductDetailsModal({ product, onClose, onAddToCart }: P
           </div>
 
           {/* Details Section */}
-          <div className="w-full md:w-1/2 p-8 md:p-12 flex flex-col overflow-y-auto">
-            <h2 className="text-3xl md:text-5xl font-display font-black text-white mb-2 uppercase">{product.name}</h2>
-            <div className="text-2xl font-bold text-accent mb-6">{product.price} EGP</div>
+          <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-12 flex flex-col overflow-y-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-5xl font-display font-black text-white mb-2 uppercase">{product.name}</h2>
+            <div className="text-xl sm:text-2xl font-bold text-accent mb-4 sm:mb-6">{product.price} EGP</div>
 
             <div className="mb-8">
               <h3 className="text-sm font-semibold uppercase tracking-wider text-foreground/50 mb-3">Select Size</h3>
