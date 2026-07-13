@@ -10,22 +10,15 @@ export default function ProductsManager() {
   // Form State
   const [editingId, setEditingId] = useState<string | null>(null);
   const [name, setName] = useState('');
-  const [price, setPrice] = useState('');
-  const [description, setDescription] = useState('');
   const [image, setImage] = useState<string | null>(null);
 
   const openModal = (product?: Product) => {
     if (product) {
       setEditingId(product.id);
       setName(product.name);
-      setPrice(product.price.toString());
-      setDescription(product.description);
       setImage(product.image);
     } else {
       setEditingId(null);
-      setName(`CTRL YZ #${products.length + 1}`);
-      setPrice('600');
-      setDescription('');
       setImage(null);
     }
     setIsModalOpen(true);
@@ -44,21 +37,24 @@ export default function ProductsManager() {
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    if (!name || !price || !description || !image) return;
+    if (!image) return;
+    const finalName = editingId ? name : `CTRL YZ #${products.length + 1}`;
+    const finalPrice = 600;
+    const finalDescription = `Premium CTRL YZ Streetwear Collection\n\n✓ خامة قطن 100% عالية الجودة لراحة تدوم.\n✓ متوفرة بعدد محدود لضمان تميز إطلالتك.\n✓ قصة أوفر سايز مثالية تناسب جميع الأذواق.`;
 
     if (editingId) {
       updateProduct(editingId, {
-        name,
-        price: Number(price),
-        description,
+        name: finalName,
+        price: finalPrice,
+        description: finalDescription,
         image
       });
     } else {
       addProduct({
         id: Math.random().toString(36).substr(2, 9),
-        name,
-        price: Number(price),
-        description,
+        name: finalName,
+        price: finalPrice,
+        description: finalDescription,
         image
       });
     }
@@ -131,19 +127,11 @@ export default function ProductsManager() {
             </h2>
             
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <label className="block text-sm font-semibold mb-2">Product Name</label>
-                <input required type="text" value={name} onChange={e => setName(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent text-white" />
-              </div>
-              
-              <div>
-                <label className="block text-sm font-semibold mb-2">Price (EGP)</label>
-                <input required type="number" min="0" value={price} onChange={e => setPrice(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent text-white" />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold mb-2">Description</label>
-                <textarea required value={description} onChange={e => setDescription(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent text-white h-24 resize-none" />
+              {/* Hidden inputs to avoid breaking any generic form handlers if we wanted them, but we just remove them from UI */}
+              <div className="bg-white/5 border border-accent/20 p-4 rounded-xl text-center mb-4">
+                <p className="text-white font-bold mb-1">Product Details Auto-Filled</p>
+                <p className="text-sm text-foreground/50">Name: CTRL YZ #{products.length + 1} | Price: 600 EGP</p>
+                <p className="text-xs text-foreground/30 mt-2 line-clamp-1">Description: Premium CTRL YZ Streetwear...</p>
               </div>
 
 

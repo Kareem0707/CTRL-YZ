@@ -39,8 +39,8 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
 
       try {
         const { data: dbProducts, error: pError } = await supabase.from('products').select('*');
-        if (!pError && dbProducts && dbProducts.length > 0) {
-          setProducts(dbProducts);
+        if (!pError && dbProducts) {
+          setProducts([...INITIAL_PRODUCTS, ...dbProducts]);
         }
 
         const { data: dbOrders, error: oError } = await supabase.from('orders').select('*');
