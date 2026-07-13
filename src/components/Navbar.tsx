@@ -4,13 +4,12 @@ import { translations } from '../i18n/translations';
 import { Globe, Menu, X, ShieldCheck, PackageSearch } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { useCart } from '../context/CartContext';
+
 import OrderTrackingModal from './OrderTrackingModal';
 
 export default function Navbar() {
   const { language, toggleLanguage } = useLanguage();
   const t = translations[language].nav;
-  const { items } = useCart();
   const location = useLocation();
   const isAdmin = location.pathname.startsWith('/admin');
   const isAuthenticated = localStorage.getItem('isAdmin') === 'true';
