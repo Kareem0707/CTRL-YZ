@@ -31,7 +31,8 @@ export default function Products() {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: (idx % 4) * 0.15, type: "spring", stiffness: 60, damping: 15 }}
-              className="glass rounded-3xl overflow-hidden group hover:border-accent/50 transition-colors flex flex-col"
+              onClick={() => setSelectedProduct(product)}
+              className="glass rounded-3xl overflow-hidden group hover:border-accent/50 transition-colors flex flex-col cursor-pointer"
             >
               <div className="relative h-64 overflow-hidden">
                 <img 
