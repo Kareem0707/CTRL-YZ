@@ -112,7 +112,7 @@ export default function ProductDetailsModal({ product, onClose, onAddToCart }: P
                 ) : (
                   <>
                     <ShoppingCart className="w-6 h-6" />
-                    إضافة للسلة
+                    شراء
                   </>
                 )}
               </button>

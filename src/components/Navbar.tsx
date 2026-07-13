@@ -68,16 +68,7 @@ export default function Navbar() {
             </button>
           )}
 
-          {!isAdmin && (
-            <Link to="/cart" className="relative p-1.5 sm:p-2 text-foreground hover:text-accent transition-colors">
-              <ShoppingCart className="w-5 h-5 md:w-6 md:h-6" />
-              {cartItemsCount > 0 && (
-                <span className="absolute top-0 right-0 bg-red-500 text-white text-[10px] font-bold w-4 h-4 md:w-5 md:h-5 flex items-center justify-center rounded-full">
-                  {cartItemsCount}
-                </span>
-              )}
-            </Link>
-          )}
+          {/* Cart removed as per floating checkout requirement */}
 
           {isAuthenticated && (
             <Link to="/admin" className="flex items-center gap-2 p-1.5 sm:p-2 text-foreground/50 hover:text-accent transition-colors">

@@ -7,7 +7,8 @@ import Services from './components/Services';
 import Statistics from './components/Statistics';
 import Contact from './components/Contact';
 import Products from './components/Products';
-import CartPage from './pages/CartPage';
+import CheckoutPage from './pages/CheckoutPage';
+import FloatingCart from './components/FloatingCart';
 
 import AdminLayout from './pages/admin/AdminLayout';
 import DashboardOverview from './pages/admin/DashboardOverview';
@@ -17,7 +18,7 @@ import AdminLogin from './pages/admin/AdminLogin';
 
 function Storefront() {
   return (
-    <div className="min-h-screen selection:bg-accent selection:text-background">
+    <div className="min-h-screen selection:bg-accent selection:text-background pb-20">
       <Navbar />
       <main>
         <Hero />
@@ -28,6 +29,7 @@ function Storefront() {
         <Statistics />
         <Contact />
       </main>
+      <FloatingCart />
     </div>
   );
 }
@@ -40,7 +42,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Storefront />} />
-      <Route path="/cart" element={<CartPage />} />
+      <Route path="/checkout" element={<CheckoutPage />} />
       <Route path="/admin-login" element={<AdminLogin />} />
       
       {/* Legal Pages */}
