@@ -2,10 +2,14 @@ import { motion } from 'framer-motion';
 import { useAdmin } from '../context/AdminContext';
 import { useCart } from '../context/CartContext';
 import { ShoppingCart } from 'lucide-react';
+import { useState } from 'react';
+import ProductDetailsModal from './ProductDetailsModal';
+import type { Product } from '../types';
 
 export default function Products() {
   const { products } = useAdmin();
   const { addToCart } = useCart();
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   return (
     <section id="products" className="py-24 relative min-h-screen">
@@ -51,7 +55,7 @@ export default function Products() {
                 <div className="flex items-center justify-between mt-auto">
                   <span className="text-2xl font-display font-bold text-accent">{product.price} EGP</span>
                   <button 
-                    onClick={() => addToCart(product)}
+                    onClick={() => setSelectedProduct(product)}
                     className="p-3 bg-white/5 rounded-full hover:bg-accent hover:text-white transition-colors"
                   >
                     <ShoppingCart className="w-5 h-5" />
@@ -62,6 +66,14 @@ export default function Products() {
           ))}
         </div>
       </div>
+
+      {selectedProduct && (
+        <ProductDetailsModal 
+          product={selectedProduct} 
+          onClose={() => setSelectedProduct(null)} 
+          onAddToCart={addToCart} 
+        />
+      )}
     </section>
   );
 }

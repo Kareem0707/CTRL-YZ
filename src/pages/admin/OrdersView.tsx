@@ -3,7 +3,7 @@ import { useAdmin } from '../../context/AdminContext';
 import { Eye, X } from 'lucide-react';
 
 export default function OrdersView() {
-  const { orders } = useAdmin();
+  const { orders, updateOrder } = useAdmin();
   const [selectedReceipt, setSelectedReceipt] = useState<string | null>(null);
 
   return (
@@ -23,9 +23,17 @@ export default function OrdersView() {
                     <p className="text-sm text-foreground/50">{new Date(order.createdAt).toLocaleString()}</p>
                   </div>
                   <div className="flex gap-4 items-center">
-                    <span className="px-3 py-1 bg-yellow-500/20 text-yellow-500 rounded-full text-xs font-bold uppercase">
-                      {order.status}
-                    </span>
+                    <select 
+                      value={order.status}
+                      onChange={(e) => updateOrder(order.id, { status: e.target.value })}
+                      className="px-3 py-1.5 bg-white/10 text-white rounded-lg text-sm font-bold border border-white/20 focus:outline-none focus:border-accent"
+                    >
+                      <option value="pending" className="bg-background text-white">قيد المراجعة</option>
+                      <option value="جاري التحضير" className="bg-background text-white">جاري التحضير</option>
+                      <option value="في الطريق" className="bg-background text-white">في الطريق</option>
+                      <option value="تم التوصيل" className="bg-background text-white">تم التوصيل</option>
+                      <option value="مرتجع" className="bg-background text-white">مرتجع</option>
+                    </select>
                     <span className="text-xl font-bold text-white">{order.total} EGP</span>
                   </div>
                 </div>

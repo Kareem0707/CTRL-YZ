@@ -41,7 +41,7 @@ export default function Contact() {
           </motion.a>
 
           <motion.a
-            href="https://wa.me/123456789"
+            href="https://wa.me/201550923275"
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}

@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useLanguage } from '../context/LanguageContext';
 import { translations } from '../i18n/translations';
-import { Globe, Menu, X, ShoppingCart, ShieldCheck } from 'lucide-react';
+import { Globe, Menu, X, ShoppingCart, ShieldCheck, PackageSearch } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
+import OrderTrackingModal from './OrderTrackingModal';
 
 export default function Navbar() {
   const { language, toggleLanguage } = useLanguage();
@@ -14,6 +15,7 @@ export default function Navbar() {
   const isAdmin = location.pathname.startsWith('/admin');
   const isAuthenticated = localStorage.getItem('isAdmin') === 'true';
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isTrackingOpen, setIsTrackingOpen] = useState(false);
 
   const cartItemsCount = items.reduce((acc, item) => acc + item.quantity, 0);
 
@@ -55,6 +57,16 @@ export default function Navbar() {
             <Globe className="w-4 h-4 text-foreground group-hover:text-accent transition-colors" />
             <span className="text-[10px] sm:text-xs md:text-sm font-semibold uppercase">{language === 'en' ? 'AR' : 'EN'}</span>
           </button>
+
+          {!isAdmin && (
+            <button 
+              onClick={() => setIsTrackingOpen(true)}
+              className="flex items-center gap-1 sm:gap-2 bg-accent/10 hover:bg-accent/20 px-3 py-1.5 md:py-2 rounded-full border border-accent/20 transition-all duration-300 text-accent group"
+            >
+              <PackageSearch className="w-4 h-4 group-hover:scale-110 transition-transform" />
+              <span className="text-[10px] sm:text-xs md:text-sm font-bold uppercase hidden sm:block">Track Order</span>
+            </button>
+          )}
 
           {!isAdmin && (
             <Link to="/cart" className="relative p-1.5 sm:p-2 text-foreground hover:text-accent transition-colors">
@@ -107,6 +119,8 @@ export default function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      {isTrackingOpen && <OrderTrackingModal onClose={() => setIsTrackingOpen(false)} />}
     </motion.nav>
   );
 }

@@ -13,7 +13,6 @@ export default function ProductsManager() {
   const [price, setPrice] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState<string | null>(null);
-  const [isBestSeller, setIsBestSeller] = useState(false);
 
   const openModal = (product?: Product) => {
     if (product) {
@@ -22,14 +21,12 @@ export default function ProductsManager() {
       setPrice(product.price.toString());
       setDescription(product.description);
       setImage(product.image);
-      setIsBestSeller(product.isBestSeller || false);
     } else {
       setEditingId(null);
-      setName('');
-      setPrice('');
+      setName(`CTRL YZ #${products.length + 1}`);
+      setPrice('600');
       setDescription('');
       setImage(null);
-      setIsBestSeller(false);
     }
     setIsModalOpen(true);
   };
@@ -54,8 +51,7 @@ export default function ProductsManager() {
         name,
         price: Number(price),
         description,
-        image,
-        isBestSeller
+        image
       });
     } else {
       addProduct({
@@ -63,8 +59,7 @@ export default function ProductsManager() {
         name,
         price: Number(price),
         description,
-        image,
-        isBestSeller
+        image
       });
     }
 
@@ -151,18 +146,7 @@ export default function ProductsManager() {
                 <textarea required value={description} onChange={e => setDescription(e.target.value)} className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:border-accent text-white h-24 resize-none" />
               </div>
 
-              <div className="flex items-center gap-3">
-                <input 
-                  type="checkbox" 
-                  id="bestseller" 
-                  checked={isBestSeller}
-                  onChange={(e) => setIsBestSeller(e.target.checked)}
-                  className="w-5 h-5 accent-accent cursor-pointer"
-                />
-                <label htmlFor="bestseller" className="text-sm font-semibold cursor-pointer">
-                  Mark as Best Seller (الأكثر مبيعاً)
-                </label>
-              </div>
+
 
               <div>
                 <label className="block text-sm font-semibold mb-2">Product Image</label>

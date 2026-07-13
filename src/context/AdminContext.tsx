@@ -5,7 +5,7 @@ import { supabase } from '../lib/supabase';
 const INITIAL_PRODUCTS: Product[] = Array.from({ length: 31 }).map((_, idx) => ({
   id: String(idx + 1),
   name: `CTRL YZ #${idx + 1}`,
-  price: 450,
+  price: 600,
   image: `/assets/products/product-${idx + 1}.webp`,
   description: 'Premium CTRL YZ Streetwear Collection',
   isBestSeller: idx < 3, // Make first 3 best sellers by default as an example
@@ -18,6 +18,7 @@ interface AdminContextType {
   updateProduct: (id: string, product: Partial<Product>) => Promise<void>;
   deleteProduct: (id: string) => Promise<void>;
   addOrder: (order: Order) => Promise<void>;
+  updateOrder: (id: string, order: Partial<Order>) => Promise<void>;
   loading: boolean;
 }
 
@@ -84,8 +85,15 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
     setOrders(prev => [order, ...prev]);
   };
 
+  const updateOrder = async (id: string, updatedFields: Partial<Order>) => {
+    if (supabase) {
+      await supabase.from('orders').update(updatedFields).eq('id', id);
+    }
+    setOrders(prev => prev.map(o => o.id === id ? { ...o, ...updatedFields } : o));
+  };
+
   return (
-    <AdminContext.Provider value={{ products, orders, addProduct, updateProduct, deleteProduct, addOrder, loading }}>
+    <AdminContext.Provider value={{ products, orders, addProduct, updateProduct, deleteProduct, addOrder, updateOrder, loading }}>
       {children}
     </AdminContext.Provider>
   );

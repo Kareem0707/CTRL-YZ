@@ -75,6 +75,9 @@ export default function CartPage() {
                   <img src={item.image} alt={item.name} className="w-24 h-24 object-cover rounded-xl" />
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-white">{item.name}</h3>
+                    {item.size && (
+                      <p className="text-sm text-foreground/50 mb-1">Size: <span className="font-bold text-white">{item.size}</span></p>
+                    )}
                     <p className="text-accent font-semibold">{item.price} EGP</p>
                   </div>
                   <div className="flex items-center gap-4">
