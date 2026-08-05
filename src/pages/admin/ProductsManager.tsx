@@ -39,7 +39,7 @@ export default function ProductsManager() {
     e.preventDefault();
     if (!image) return;
     const finalName = editingId ? name : `CTRL YZ #${products.length + 1}`;
-    const finalPrice = 600;
+    const finalPrice = 500;
     const finalDescription = `Premium CTRL YZ Streetwear Collection\n\n✓ خامة قطن 100% عالية الجودة لراحة تدوم.\n✓ متوفرة بعدد محدود لضمان تميز إطلالتك.\n✓ قصة أوفر سايز مثالية تناسب جميع الأذواق.`;
 
     if (editingId) {
@@ -130,7 +130,7 @@ export default function ProductsManager() {
               {/* Hidden inputs to avoid breaking any generic form handlers if we wanted them, but we just remove them from UI */}
               <div className="bg-white/5 border border-accent/20 p-4 rounded-xl text-center mb-4">
                 <p className="text-white font-bold mb-1">Product Details Auto-Filled</p>
-                <p className="text-sm text-foreground/50">Name: CTRL YZ #{products.length + 1} | Price: 600 EGP</p>
+                <p className="text-sm text-foreground/50">Name: CTRL YZ #{products.length + 1} | Price: 500 EGP</p>
                 <p className="text-xs text-foreground/30 mt-2 line-clamp-1">Description: Premium CTRL YZ Streetwear...</p>
               </div>
 
