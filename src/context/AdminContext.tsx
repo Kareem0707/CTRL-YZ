@@ -2,11 +2,11 @@ import { createContext, useContext, useState, useEffect, type ReactNode } from '
 import type { Product, Order } from '../types';
 import { supabase } from '../lib/supabase';
 
-const INITIAL_PRODUCTS: Product[] = Array.from({ length: 42 }).map((_, idx) => ({
+const INITIAL_PRODUCTS: Product[] = Array.from({ length: 41 }).map((_, idx) => ({
   id: String(idx + 1),
   name: `CTRL YZ #${idx + 1}`,
   price: 500,
-  image: `/assets/products/product-${idx + 1}.${idx + 1 > 25 ? 'jpeg' : 'webp'}`,
+  image: `/assets/products/product-${idx + 1}.${idx + 1 > 24 ? 'jpeg' : 'webp'}`,
   description: 'Premium CTRL YZ Streetwear Collection',
   isBestSeller: idx < 3, // Make first 3 best sellers by default as an example
 })).reverse();
