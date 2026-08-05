@@ -9,7 +9,7 @@ const INITIAL_PRODUCTS: Product[] = Array.from({ length: 52 }).map((_, idx) => (
   image: `/assets/products/product-${idx + 1}.${idx + 1 > 31 ? 'jpeg' : 'webp'}`,
   description: 'Premium CTRL YZ Streetwear Collection',
   isBestSeller: idx < 3, // Make first 3 best sellers by default as an example
-}));
+})).reverse();
 
 interface AdminContextType {
   products: Product[];
@@ -40,7 +40,7 @@ export const AdminProvider = ({ children }: { children: ReactNode }) => {
       try {
         const { data: dbProducts, error: pError } = await supabase.from('products').select('*');
         if (!pError && dbProducts) {
-          setProducts([...INITIAL_PRODUCTS, ...dbProducts]);
+          setProducts([...dbProducts.reverse(), ...INITIAL_PRODUCTS]);
         }
 
         const { data: dbOrders, error: oError } = await supabase.from('orders').select('*');
