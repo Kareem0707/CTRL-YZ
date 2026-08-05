@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, type ReactNode } from '
 import type { Product, Order } from '../types';
 import { supabase } from '../lib/supabase';
 
-const INITIAL_PRODUCTS: Product[] = Array.from({ length: 46 }).map((_, idx) => ({
+const INITIAL_PRODUCTS: Product[] = Array.from({ length: 43 }).map((_, idx) => ({
   id: String(idx + 1),
   name: `CTRL YZ #${idx + 1}`,
   price: 500,
